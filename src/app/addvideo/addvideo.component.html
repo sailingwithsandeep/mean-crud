@@ -1,0 +1,17 @@
+<div class="wrapper">
+    <div id="formContent">
+    <h2>Add Video</h2>
+      <form [formGroup]="videoForm" (ngSubmit)="postVideo()" class="form-group p-4" >
+        <input type="text" class="form-control mb-3" placeholder="Title" formControlName="title"/>
+        <input type="text" class="form-control mb-3" placeholder="Description" formControlName="desc"/>
+        <input type="text" class="form-control mb-3" placeholder="Posted By" formControlName="posted_by"/>
+        <input type="text" class="form-control mb-3" placeholder="Category" formControlName="cat"/>
+        <input type="number" class="form-control mb-3" placeholder="Likes" formControlName="likes"/>
+        <input type="text" class="form-control mb-3" placeholder="Url" formControlName="url"/>
+        <button type="submit" class="form-control btn btn-warning ">Add !</button>
+      </form>
+      <div id="formFooter">
+        <a class="underlineHover" routerLink="/videos">Cancel !</a>
+      </div>
+    </div>
+  </div>

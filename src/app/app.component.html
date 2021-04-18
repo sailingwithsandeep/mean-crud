@@ -1,0 +1,15 @@
+<mat-toolbar class="navbar bg-warning">
+  <h1 class="text-dark">Sandeep Parmar</h1>
+  <div>
+    <a class="btn btn-primary" *ngIf="!this._authService.isLoggedIn()" routerLink="/register">Register</a>
+    <a *ngIf="this._authService.isLoggedIn()" routerLink="/addvideo" class="btn btn-info ml-2"><i
+                class="fa fa-plus" aria-hidden="true"></i> Add Video</a>
+    <a *ngIf="this._authService.isLoggedIn()" (click)="logout()" class="btn btn-danger ml-2"><i
+                class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+  </div>
+</mat-toolbar>
+<!-- <div *ngIf="this._authService.isLoading | async">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div> -->
+
+<router-outlet></router-outlet>

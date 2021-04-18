@@ -1,0 +1,86 @@
+<div class="container mt-5">
+    <table class="table table-light table-striped"  style="box-shadow:0 30px 60px 0 rgba(0,0,0,0.3)">
+        <thead>
+            <th colspan="2">
+                <input type="text" name="title" placeholder="Search" class="form-control bg-light" [(ngModel)]="title"
+            (ngModelChange)="searchTitle()" />
+            </th>
+        </thead>
+        <thead>
+            <th (click)="sort('title')">Title <i class="fa fa-sort"></i></th>
+            <th (click)="sort('desc')">Description <i class="fa fa-sort"></i></th>
+            <th (click)="sort('posted_by')">Posted By <i class="fa fa-sort"></i></th>
+            <th (click)="sort('cat')">Category <i class="fa fa-sort"></i></th>
+            <th (click)="sort('likes')">Likes <i class="fa fa-sort"></i></th>
+            <th (click)="sort('url')">Url <i class="fa fa-sort"></i></th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let video of videos | paginate:{itemsPerPage:5,currentPage:p} | orderBy:key:reverse">
+                <td>
+                    <div *ngIf="video.isEdit">
+                        <input type="text" class="form-control" [(ngModel)]="video.title">
+                    </div>
+                    <div *ngIf="!video.isEdit">
+                        {{video.title}}
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="video.isEdit">
+                        <input type="text" class="form-control" [(ngModel)]="video.desc">
+                    </div>
+                    <div *ngIf="!video.isEdit">
+                        {{video.desc}}
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="video.isEdit">
+                        <input type="text" class="form-control" [(ngModel)]="video.posted_by">
+                    </div>
+                    <div *ngIf="!video.isEdit">
+                        {{video.posted_by}}
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="video.isEdit">
+                        <input type="text" class="form-control" [(ngModel)]="video.cat">
+                    </div>
+                    <div *ngIf="!video.isEdit">
+                        {{video.cat}}
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="video.isEdit">
+                        <input type="text" class="form-control" [(ngModel)]="video.likes">
+                    </div>
+                    <div *ngIf="!video.isEdit">
+                        {{video.likes}}
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="video.isEdit">
+                        <input type="text" class="form-control" [(ngModel)]="video.url">
+                    </div>
+                    <div *ngIf="!video.isEdit">
+                        {{video.url}}
+                    </div>
+                </td>
+                <td class="font-weight-bold" style="display: flex;">
+                <div *ngIf="video.isEdit" class="btn-group">
+                    <button class="btn btn-success form-control" (click)="update(video)">Update</button>
+                    <button class="btn btn-secondary form-control" (click)="cancel(video)">Cancel</button>
+                </div>
+                <div *ngIf="!video.isEdit" class="btn-group">
+                    <button type="submit" (click)="edit(video)" class="btn btn-warning form-control">Edit</button>
+                    <button type="submit" class="btn btn-danger form-control" (click)="delete(video._id)">Delete</button>
+                </div>
+            </td>
+            </tr>
+            <tr>
+            <td colspan="7" align="right">
+                <pagination-controls class="" (pageChange)="p=$event"></pagination-controls>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

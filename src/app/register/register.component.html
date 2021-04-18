@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <div id="formContent">
+    <h2>Sign Up</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="registerUser()" class="form-group p-4">
+      <input type="text" class="form-control mb-3" placeholder="Username" formControlName="username" />
+      <input type="password" class="form-control mb-3" placeholder="Password" formControlName="password" />
+      <button type="submit" class="form-control btn btn-warning ">REGISTER!</button>
+    </form>
+    <div id="formFooter">
+      <a class="underlineHover" routerLink="/login">Already Registered? LogIn! </a>
+    </div>
+  </div>
+</div>
